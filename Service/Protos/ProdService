@@ -1,0 +1,16 @@
+syntax = "proto3";
+package Protos;
+option go_package = ".;Service";
+import "Prods.proto";
+
+message ProdRequest1 {
+    int32 size = 1;
+}
+
+message ProdResponse1 {
+    repeated ProdModel data = 1;
+}
+
+service ProdService1 {
+    rpc GetProdList (ProdRequest1) returns (ProdResponse1);
+}

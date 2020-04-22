@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Protos;
+option go_package = ".;Service";
+message ProdModel{
+    int32 ProdId = 1;
+    string ProdName = 2;
+}
+
+message ProdRequest{
+    int32 size = 1;
+}
+
+message ProdResponse{
+    repeated ProdModel data = 1;
+}
