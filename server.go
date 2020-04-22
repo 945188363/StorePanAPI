@@ -4,7 +4,9 @@ import (
 	"StorePanAPI/Service"
 	"StorePanAPI/Wrapper"
 	"StorePanAPI/handler"
+	_ "StorePanAPI/handler"
 	"StorePanAPI/middleware"
+	_ "StorePanAPI/middleware"
 	"context"
 	"fmt"
 	"github.com/micro/go-micro"
@@ -12,6 +14,7 @@ import (
 	"github.com/micro/go-micro/util/log"
 	"github.com/micro/go-plugins/registry/consul"
 	"net/http"
+	_ "net/http"
 )
 
 func main() {
