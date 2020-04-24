@@ -4,7 +4,7 @@
 // 	protoc        v3.11.4
 // source: ProdService
 
-package Service
+package rpcService
 
 import (
 	"github.com/golang/protobuf/proto"

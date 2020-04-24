@@ -1,6 +1,6 @@
 syntax = "proto3";
 package Protos;
-option go_package = ".;Service";
+option go_package = ".;rpcService";
 message ProdModel{
     int32 ProdId = 1;
     string ProdName = 2;

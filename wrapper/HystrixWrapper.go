@@ -1,7 +1,7 @@
-package Wrapper
+package wrapper
 
 import (
-	"StorePanAPI/Service"
+	"StorePanAPI/rpcService"
 	"context"
 	"github.com/afex/hystrix-go/hystrix"
 	"github.com/micro/go-micro/client"
@@ -12,8 +12,8 @@ type HystrixWrapper struct {
 	client.Client
 }
 
-func NewProd(id int32, name string) *Service.ProdModel {
-	return &Service.ProdModel{
+func NewProd(id int32, name string) *rpcService.ProdModel {
+	return &rpcService.ProdModel{
 		ProdId:   id,
 		ProdName: name,
 	}
@@ -21,12 +21,12 @@ func NewProd(id int32, name string) *Service.ProdModel {
 
 // 降级方法
 func DefaultProdList(rsp interface{}) {
-	ret := make([]*Service.ProdModel, 0)
+	ret := make([]*rpcService.ProdModel, 0)
 	var i int32
 	for i = 0; i < 5; i++ {
 		ret = append(ret, NewProd(20+i, "prod"+strconv.Itoa(int(i))))
 	}
-	result := rsp.(*Service.ProdResponse1)
+	result := rsp.(*rpcService.ProdResponse1)
 	result.Data = ret
 }
 

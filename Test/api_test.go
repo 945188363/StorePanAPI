@@ -1,8 +1,8 @@
 package Test
 
 import (
-	"StorePanAPI/Service"
-	"StorePanAPI/Wrapper"
+	"StorePanAPI/rpcService"
+	"StorePanAPI/wrapper"
 	"context"
 	"fmt"
 	"github.com/micro/go-micro"
@@ -23,12 +23,12 @@ func CallRpcAPI() (string, error) {
 	prodServiceClient := micro.NewService(
 		micro.Name("ProdService.client"),
 		micro.Registry(consulReg),
-		micro.WrapClient(Wrapper.NewLogWrapper),
-		micro.WrapClient(Wrapper.NewHystrixWrapper),
+		micro.WrapClient(wrapper.NewLogWrapper),
+		micro.WrapClient(wrapper.NewHystrixWrapper),
 	)
 	prodServiceClient.Init()
-	prodService1 := Service.NewProdService1Service("ProdServiceRPC", prodServiceClient.Client())
-	var req Service.ProdRequest1
+	prodService1 := rpcService.NewProdService1Service("ProdServiceRPC", prodServiceClient.Client())
+	var req rpcService.ProdRequest1
 	req.Size = 2
 	prodResponse1, err := prodService1.GetProdList(context.Background(), &req)
 	if err != nil {
@@ -45,8 +45,8 @@ func CallRpcAPI2(s selector.Selector) {
 		micro.Name("ProdService.client"),
 		micro.Selector(s),
 	)
-	prodService1 := Service.NewProdService1Service("ProdServiceRPC", prodServiceClient.Client())
-	var req Service.ProdRequest1
+	prodService1 := rpcService.NewProdService1Service("ProdServiceRPC", prodServiceClient.Client())
+	var req rpcService.ProdRequest1
 	req.Size = 2
 	prodResponse1, err := prodService1.GetProdList(context.Background(), &req)
 	if err != nil {

@@ -4,7 +4,7 @@
 // 	protoc        v3.11.4
 // source: Prods.proto
 
-package Service
+package rpcService
 
 import (
 	proto "github.com/golang/protobuf/proto"
@@ -206,12 +206,12 @@ func file_Prods_proto_rawDescGZIP() []byte {
 
 var file_Prods_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_Prods_proto_goTypes = []interface{}{
-	(*ProdModel)(nil),    // 0: Service.ProdModel
-	(*ProdRequest)(nil),  // 1: Service.ProdRequest
-	(*ProdResponse)(nil), // 2: Service.ProdResponse
+	(*ProdModel)(nil),    // 0: rpcService.ProdModel
+	(*ProdRequest)(nil),  // 1: rpcService.ProdRequest
+	(*ProdResponse)(nil), // 2: rpcService.ProdResponse
 }
 var file_Prods_proto_depIdxs = []int32{
-	0, // 0: Service.ProdResponse.data:type_name -> Service.ProdModel
+	0, // 0: rpcService.ProdResponse.data:type_name -> rpcService.ProdModel
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
