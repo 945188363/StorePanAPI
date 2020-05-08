@@ -13,6 +13,7 @@ import (
 	"github.com/micro/go-micro/registry"
 	"github.com/micro/go-micro/util/log"
 	"github.com/micro/go-plugins/registry/consul"
+	"io/ioutil"
 	"net/http"
 	_ "net/http"
 )
@@ -37,8 +38,18 @@ func main() {
 		fmt.Printf("Fail to start server,error %s", err.Error())
 		return
 	}
-
+	// Test()
 	// fmt.Printf(CallRpcAPI())
+}
+
+func Test() {
+	resp, err := http.PostForm("https://mock.yonyoucloud.com/mock/6292/media/api/mediaInfo", nil)
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+	fmt.Println(string(body))
 }
 
 // 调用rpc服务
