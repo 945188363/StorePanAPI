@@ -134,8 +134,11 @@ func timedHandler(duration time.Duration) func(c *gin.Context) {
 		// if the context is done it timed out or was cancelled
 		// so don't return anything
 		case <-ctx.Done():
-			return
+			c.JSON(300, gin.H{
+				"msg": "test",
+			})
 
+			return
 			// if the request finished then finish the request by
 			// writing the response
 		case res := <-doneChan:
