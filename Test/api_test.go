@@ -162,4 +162,26 @@ func TestWeb(t *testing.T) {
 
 	// run the server
 	log.Fatal(engine.Run(":8099"))
+
+}
+
+func TestMap(t *testing.T) {
+	// req := Domain.NewRpcRequest()
+	var req map[string]string
+	// req["size"] = "asdas"
+	fmt.Println(req)
+	req = make(map[string]string)
+	req["size"] = "111111111"
+	fmt.Println(req)
+
+	s := initMap()
+	s["size"] = "2222"
+	fmt.Println(s)
+}
+
+func initMap() map[string]string {
+	s := make(map[string]string)
+
+	return s
+
 }
